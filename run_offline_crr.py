@@ -51,7 +51,7 @@ flags.DEFINE_float('cql_alpha', 0.0, 'Scaling parameter for the offline loss reg
 flags.DEFINE_string('policy_improvement_mode', 'binary', 'Defines how the advantage is processed.')
 FLAGS = flags.FLAGS
 
-WANDB_PROJECT_PATH = 'kmeco/offline-rl/{}:latest'
+WANDB_PROJECT_PATH = 'zxj32/test/{}:{}'
 
 
 def init_or_resume():
