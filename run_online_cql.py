@@ -33,7 +33,7 @@ flags.DEFINE_integer('batch_size', 256, 'Batch size for the learner.')
 flags.DEFINE_integer('ep_max_len', 500, 'Maximum length of an episode.')
 FLAGS = flags.FLAGS
 
-WANDB_PROJECT_PATH = 'kmeco/offline-rl/{}:latest'
+WANDB_PROJECT_PATH = 'zxj32/test/{}:{}'
 
 
 def init_or_resume():
