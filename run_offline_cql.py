@@ -48,7 +48,7 @@ flags.DEFINE_string('policy_improvement_mode', 'binary', 'Defines how the advant
 flags.DEFINE_float('translate_lse', 1., 'Coefficient by which LogSumExp is scaled to make estimate more accurate.')
 FLAGS = flags.FLAGS
 
-WANDB_PROJECT_PATH = 'kmeco/offline-rl/{}:latest'
+WANDB_PROJECT_PATH = 'zxj32/test/{}:{}'
 
 
 def init_or_resume():
