@@ -32,7 +32,7 @@ FLAGS = flags.FLAGS
 
 
 def main(_):
-  wb_run = wandb.init(project="offline-rl",
+  wb_run = wandb.init(project="test",
                       group=FLAGS.logs_tag,
                       id=FLAGS.wandb_id or str(int(time.time())),
                       config=FLAGS.flag_values_dict(),

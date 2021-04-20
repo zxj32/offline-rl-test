@@ -51,11 +51,11 @@ flags.DEFINE_float('cql_alpha', 0.0, 'Scaling parameter for the offline loss reg
 flags.DEFINE_string('policy_improvement_mode', 'binary', 'Defines how the advantage is processed.')
 FLAGS = flags.FLAGS
 
-WANDB_PROJECT_PATH = 'zxj32/test/{}:latest'
+WANDB_PROJECT_PATH = 'zxj32/test/{}:{}'
 
 
 def init_or_resume():
-  wb_run = wandb.init(project="offline-rl",
+  wb_run = wandb.init(project="test",
                       group=FLAGS.logs_tag,
                       id=FLAGS.wandb_id or str(int(time.time())),
                       config=FLAGS.flag_values_dict(),
