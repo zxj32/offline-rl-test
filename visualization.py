@@ -200,5 +200,4 @@ def plot_dataset_characteristics(dataset, shape, filter_negative=False):
   a.bar(['left', 'right', 'forward'], np.sum(action_counts, axis=0) / np.sum(action_counts))
   a.set_title('Action counts.')
 
-  plt.show()
   plt.savefig("dataset.png")
