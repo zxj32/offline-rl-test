@@ -201,3 +201,4 @@ def plot_dataset_characteristics(dataset, shape, filter_negative=False):
   a.set_title('Action counts.')
 
   plt.show()
+  plt.savefig("dataset.png")
