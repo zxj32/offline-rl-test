@@ -43,7 +43,7 @@ def _build_custom_loggers(wb_client):
 
 
 def _build_environment(name, n_actions=3, max_steps=500):
-  raw_env = gym.make(name, agent_pos=(1, 1), goal_pos=(4, 4))
+  raw_env = gym.make(name, agent_pos=(1, 1), goal_pos=(3, 3))
   raw_env.width = 10
   raw_env.height = 10
   print("change the grd size !!!!!!!!!!!!")
