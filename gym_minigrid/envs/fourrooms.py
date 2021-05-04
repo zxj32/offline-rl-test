@@ -39,6 +39,7 @@ class FourRoomsEnv(MiniGridEnv):
                 xR = xL + room_w
                 yB = yT + room_h
                 np.random.seed(123)
+                print("set random seed")
                 # Bottom wall and door
                 if i + 1 < 2:
                     self.grid.vert_wall(xR, yT, room_h)
