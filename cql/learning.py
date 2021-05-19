@@ -120,6 +120,10 @@ class CQLLearner(acme.Learner, tf2_savers.TFSaveable):
     # fill the replay buffer.
     self._timestamp = None
 
+  def change_dataset(self, dataset, empirical_policy):
+    self._iterator = iter(dataset)
+    self._emp_policy = empirical_policy
+
   # @tf.function
   def _step(self) -> Dict[str, tf.Tensor]:
     """Do a step of SGD and update the priorities."""
