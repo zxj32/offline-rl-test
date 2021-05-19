@@ -34,7 +34,7 @@ flags.DEFINE_integer('evaluation_episodes', 10, 'Evaluation episodes.')
 flags.DEFINE_integer('max_eval_episode_len', 100, 'Evaluation episodes.')
 flags.DEFINE_integer('epochs', 100, 'Number of epochs to run (samples only 1 transition per episode in each epoch).')
 flags.DEFINE_integer('seed', 1234, 'Random seed for replicable results. Set to 0 for no seed.')
-flags.DEFINE_integer('model_v', 'v1', 'model version.')
+flags.DEFINE_string('model_v', 'v1', 'model version.')
 
 # general learner config
 flags.DEFINE_integer('batch_size', 64, 'Batch size.')
