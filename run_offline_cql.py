@@ -34,6 +34,7 @@ flags.DEFINE_integer('evaluation_episodes', 10, 'Evaluation episodes.')
 flags.DEFINE_integer('max_eval_episode_len', 100, 'Evaluation episodes.')
 flags.DEFINE_integer('epochs', 100, 'Number of epochs to run (samples only 1 transition per episode in each epoch).')
 flags.DEFINE_integer('seed', 1234, 'Random seed for replicable results. Set to 0 for no seed.')
+flags.DEFINE_integer('model_v', 'v1', 'model version.')
 
 # general learner config
 flags.DEFINE_integer('batch_size', 64, 'Batch size.')
@@ -62,8 +63,8 @@ def init_or_resume():
         checkpoint_dir = wandb.run.summary['checkpoint_dir']
         group = wandb.run.summary['group']
 
-        logging.info("Downloading model artifact from: " + WANDB_PROJECT_PATH.format(group))
-        artifact = wb_run.use_artifact(WANDB_PROJECT_PATH.format(group), type='model')
+        logging.info("Downloading model artifact from: " + WANDB_PROJECT_PATH.format(group, FLAGS.model_v))
+        artifact = wb_run.use_artifact(WANDB_PROJECT_PATH.format(group, FLAGS.model_v), type='model')
         download_dir = artifact.download(root=checkpoint_dir)
         FLAGS.acme_id = checkpoint_dir.split('/')[-2]
         logging.info("Model checkpoint downloaded to: {}".format(download_dir))
