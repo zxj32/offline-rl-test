@@ -15,6 +15,11 @@ class GreedyHead(snt.Module):
   def __call__(self, distribution: tfd.Distribution):
     return tf.argmax(distribution.logits, axis=1)
 
+class GreedyHead2(snt.Module):
+  """Simple sonnet module to sample from a tfp.Distribution."""
+
+  def __call__(self, distribution):
+    return tf.argmax(distribution, axis=1) 
 
 def get_default_critic(env_spec):
   critic = snt.Sequential([
