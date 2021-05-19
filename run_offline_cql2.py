@@ -83,17 +83,33 @@ def main(_):
     raw_dataset = load_tf_dataset(directory=FLAGS.dataset_dir)
     empirical_policy = compute_empirical_policy(raw_dataset)
 
+    raw_dataset2 = load_tf_dataset(directory=FLAGS.dataset_dir2)
+    empirical_policy2 = compute_empirical_policy(raw_dataset2)
+
+    raw_dataset3 = load_tf_dataset(directory=FLAGS.dataset_dir3)
+    empirical_policy3 = compute_empirical_policy(raw_dataset3)
+
     dataset = preprocess_dataset(raw_dataset,
                                  FLAGS.batch_size,
                                  FLAGS.n_step_returns,
                                  FLAGS.discount)
+
+    dataset2 = preprocess_dataset(raw_dataset2,
+                                  FLAGS.batch_size,
+                                  FLAGS.n_step_returns,
+                                  FLAGS.discount)
+
+    dataset3 = preprocess_dataset(raw_dataset3,
+                                  FLAGS.batch_size,
+                                  FLAGS.n_step_returns,
+                                  FLAGS.discount)
 
     # Create the main critic network
     critic_network = networks.get_default_critic(env_spec)
 
     policy_network = snt.Sequential([
         critic_network,
-        networks.GreedyHead2(),
+        lambda q: trfl.epsilon_greedy(q, epsilon=FLAGS.epsilon).sample(),
     ])
 
     tf2_utils.create_variables(critic_network, [env_spec.observations])
@@ -126,6 +142,12 @@ def main(_):
 
     # Run the environment loop.
     for e in tqdm(range(FLAGS.epochs)):
+        if e == 13:
+            learner.change_dataset(dataset2, empirical_policy2)
+            print("change dataset2")
+        if e == 26:
+            learner.change_dataset(dataset3, empirical_policy3)
+            print("change dataset3")
         for _ in range(FLAGS.evaluate_every):
             learner.step()
         eval_loop.run(FLAGS.evaluation_episodes)
