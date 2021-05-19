@@ -93,7 +93,7 @@ def main(_):
 
     policy_network = snt.Sequential([
         critic_network,
-        networks.GreedyHead(),
+        networks.GreedyHead2(),
     ])
 
     tf2_utils.create_variables(critic_network, [env_spec.observations])
